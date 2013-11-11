@@ -1,0 +1,30 @@
+
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies { classpath 'com.android.tools.build:gradle:0.6.+' }
+}
+
+apply plugin: 'android'
+
+group "com.simperium"
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+}
+
+android {
+
+    compileSdkVersion 19
+    buildToolsVersion "19"
+
+    defaultConfig {
+        minSdkVersion 8
+        targetSdkVersion 19
+    }
+
+}
