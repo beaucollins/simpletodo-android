@@ -2,4 +2,5 @@
 <resources>
   <color name="light_gray">#F0F0F0</color>
   <color name="dark_gray">#CCC</color>
+  <color name="empty_task_text_color">#999</color>
 </resources>

@@ -8,6 +8,11 @@ import android.content.ServiceConnection;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.os.IBinder;
+import android.graphics.Typeface;
+import android.text.Spannable;
+import android.text.SpannableString;
+import android.text.style.StyleSpan;
+import android.text.style.ForegroundColorSpan;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,6 +32,8 @@ import com.simperium.android.SimperiumService;
 
 public class TodoListActivity extends SimperiumService.ListActivity
 implements Bucket.Listener<Todo>, OnItemClickListener, OnEditorActionListener {
+
+    public static final String EMPTY_STRING="";
 
     public final int ADD_ACTION_ID = 100;
 
@@ -153,7 +160,13 @@ implements Bucket.Listener<Todo>, OnItemClickListener, OnEditorActionListener {
             Todo todo = bucketCursor.getObject();
 
             TextView textView = (TextView) view.findViewById(R.id.label);
-            textView.setText(todo.getTitle());
+
+            CharSequence title = todo.getTitle();
+
+            if (title.equals(EMPTY_STRING))
+                title = emptyTitle();
+
+            textView.setText(title);
 
             CheckBox checkbox = (CheckBox) view.findViewById(R.id.checkbox);
             checkbox.setChecked(todo.isChecked());
@@ -166,6 +179,14 @@ implements Bucket.Listener<Todo>, OnItemClickListener, OnEditorActionListener {
             return getLayoutInflater().inflate(R.layout.todo_row, null);
         }
 
+    }
+
+    protected CharSequence emptyTitle() {
+        SpannableString title = new SpannableString(getString(R.string.empty_task_title));
+        int length = title.length();
+        title.setSpan(new StyleSpan(Typeface.ITALIC), 0, length, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+        title.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.empty_task_text_color)), 0, length, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+        return title;
     }
 
 }
