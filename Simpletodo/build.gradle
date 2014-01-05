@@ -12,10 +12,15 @@ group "com.simperium"
 
 repositories {
     mavenCentral()
+    maven { url "http://simperium.github.io/simperium-android" }
 }
 
 dependencies {
+    debugCompile 'com.simperium:simperium-android-support:0.4.1-beta3'
+    releaseCompile 'com.simperium:simperium-android:0.4.1-beta3'
 }
+
+version "1.0.0"
 
 android {
 
@@ -25,6 +30,17 @@ android {
     defaultConfig {
         minSdkVersion 8
         targetSdkVersion 19
+        versionCode 1
+        versionName version
+
+        ["simperiumApp", "simperiumKey"].each { property ->
+            if (!project.hasProperty(property))
+                throw new ProjectConfigurationException("Project build missing ${property} property", null)
+        }
+
+        buildConfigField "String", "SIMPERIUM_APP", "\"${project.simperiumApp}\""
+        buildConfigField "String", "SIMPERIUM_KEY", "\"${project.simperiumKey}\""
+
     }
 
 }

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_height="fill_parent"
+    android:layout_width="fill_parent">
+    <ListView
+        android:id="@android:id/list"
+        android:layout_height="0dp"
+        android:layout_width="fill_parent"
+        android:layout_weight="1"
+        android:fillViewport="true" />
+    <RelativeLayout
+        android:layout_height="wrap_content"
+        android:layout_width="fill_parent">
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_height="wrap_content"
+            android:layout_width="fill_parent"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:background="@color/light_gray"
+            android:padding="8dp">
+            <EditText
+                android:id="@+id/new_task_text"
+                android:layout_height="wrap_content"
+                android:layout_width="fill_parent"
+                android:singleLine="true"
+                android:imeActionLabel="@string/add"
+                android:imeActionId="100"
+                android:imeOptions="actionDone"
+                android:hint="@string/task_hint" />
+        </LinearLayout>
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:layout_alignParentTop="true"
+            android:background="@android:drawable/divider_horizontal_textfield" />
+    </RelativeLayout>
+</LinearLayout>

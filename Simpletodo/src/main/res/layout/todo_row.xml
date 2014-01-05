@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  android:orientation="horizontal"
+  android:descendantFocusability="blocksDescendants" 
+  android:layout_width="fill_parent"
+  android:layout_height="wrap_content"
+  android:gravity="center_vertical"
+  android:padding="8dp">
+  <TextView
+    style="@android:style/TextAppearance.Medium"
+    android:id="@+id/label"
+    android:layout_weight="1"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:duplicateParentState="true"
+    android:text="Hello World" />
+  <CheckBox
+    android:layout_weight="0"
+    android:id="@+id/checkbox"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:duplicateParentState="true"
+    android:clickable="false" />
+</LinearLayout>

@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <resources>
   <string name="app_name">Simpletodo</string>
+  <string name="new_task">New Task</string>
+  <string name="task_hint">What needs to be done?</string>
+  <string name="add">Add</string>
 </resources>
