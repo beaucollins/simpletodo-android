@@ -105,7 +105,7 @@ implements Bucket.Listener<Todo>, OnItemClickListener, OnEditorActionListener {
         Todo todo = mAdapter.getItem(position);
         todo.toggleDone();
         CheckBox checkbox = (CheckBox) v.findViewById(R.id.checkbox);
-        checkbox.setChecked(todo.isChecked());
+        checkbox.setChecked(todo.isDone());
     }
 
     @Override
@@ -169,7 +169,7 @@ implements Bucket.Listener<Todo>, OnItemClickListener, OnEditorActionListener {
             textView.setText(title);
 
             CheckBox checkbox = (CheckBox) view.findViewById(R.id.checkbox);
-            checkbox.setChecked(todo.isChecked());
+            checkbox.setChecked(todo.isDone());
 
         }
 

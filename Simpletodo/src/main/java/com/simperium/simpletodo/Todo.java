@@ -5,6 +5,7 @@ import com.simperium.client.BucketObject;
 import com.simperium.client.BucketSchema;
 import com.simperium.client.Query;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 public class Todo extends BucketObject {
@@ -16,6 +17,9 @@ public class Todo extends BucketObject {
         public Schema() {
             // autoIndex indexes all top level properties: done, title and order
             autoIndex();
+            // Todo instances by default have { "done": 0 }
+            setDefault(DONE_PROPERTY, NOT_DONE);
+
         }
 
         public String getRemoteName() {
@@ -52,7 +56,7 @@ public class Todo extends BucketObject {
     }
 
     public String toString() {
-        return "Todo: " + getTitle() + " checked: " + (isChecked() ? "yes" : "no" ) + "\n" + properties.toString(); 
+        return "Todo " + getSimperiumKey() + ": " + getTitle() + " [" + (isDone() ? "✓" : " " ) + "]";
     }
 
     protected void updateProperties(JSONObject properties) {
@@ -60,7 +64,7 @@ public class Todo extends BucketObject {
     }
 
     public void toggleDone() {
-        setProperty(DONE_PROPERTY, isChecked() ? NOT_DONE : DONE);
+        setProperty(DONE_PROPERTY, isDone() ? NOT_DONE : DONE);
         save();
     }
 
@@ -72,8 +76,26 @@ public class Todo extends BucketObject {
         setProperty(TITLE_PROPERTY, title);
     }
 
-    public boolean isChecked() {
-        return properties.optInt(DONE_PROPERTY, NOT_DONE) == DONE;
+    /**
+     * Simpletodo on iOS uses boolean true/false JSON while the web app uses
+     * an integer (1=true, 0=done) instead.
+     * 
+     * We use an int but we need to check for boolean as well.
+     */
+    public boolean isDone() {
+        try {
+            // is done property an int of 1?
+            return properties.getInt(DONE_PROPERTY) == DONE;
+        } catch (JSONException e) {
+            // done wasn't an int
+            try {
+                // is done boolean true?
+                return properties.getBoolean(DONE_PROPERTY);
+            } catch (JSONException e1) {
+                // this was unexpected, it should have been an int or a boolean but was neither, we'll just return not done in this case
+                return false;
+            }
+        }
     }
 
     public void setOrder(int order) {
