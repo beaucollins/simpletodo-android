@@ -99,7 +99,7 @@ implements Bucket.Listener<Todo>, OnItemClickListener, OnEditorActionListener {
 
         Todo todo = mTodos.newObject();
         todo.setTitle(label);
-        todo.setOrder(getListView().getCount());
+        todo.setOrder(getListView().getAdapter().getCount());
         todo.save();
 
         return true;
