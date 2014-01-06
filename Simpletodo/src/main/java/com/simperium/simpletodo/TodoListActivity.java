@@ -87,6 +87,11 @@ implements Bucket.Listener<Todo>, OnItemClickListener, OnEditorActionListener {
 
         // clear the text view
         String label = tv.getText().toString();
+
+        // we don't create blank tasks, but leave the keyboard
+        if (label.equals(EMPTY_STRING))
+            return true;
+
         tv.getEditableText().clear();
 
         InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
