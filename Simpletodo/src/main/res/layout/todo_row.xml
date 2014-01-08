@@ -6,19 +6,32 @@
   android:layout_height="wrap_content"
   android:gravity="center_vertical"
   android:padding="8dp">
+  <CheckBox
+    android:id="@+id/checkbox"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginEnd="4dp"
+    android:duplicateParentState="true"
+    android:clickable="false" />
   <TextView
     style="@android:style/TextAppearance.Medium"
     android:id="@+id/label"
     android:layout_weight="1"
     android:layout_width="0dp"
     android:layout_height="wrap_content"
-    android:duplicateParentState="true"
-    android:text="Hello World" />
-  <CheckBox
-    android:layout_weight="0"
-    android:id="@+id/checkbox"
+    android:duplicateParentState="true" />
+  <View
+    android:layout_height="fill_parent"
+    android:layout_width="1dp"
+    android:layout_marginStart="8dp"
+    android:layout_marginEnd="8dp"
+    android:background="@color/divider"/>
+  <ImageButton
+    android:id="@+id/edit_button"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:duplicateParentState="true"
-    android:clickable="false" />
+    android:scaleType="fitCenter"
+    android:tint="@color/edit_button_tint"
+    android:src="@drawable/ic_action_edit"
+    android:background="?android:attr/selectableItemBackground"/>
 </LinearLayout>

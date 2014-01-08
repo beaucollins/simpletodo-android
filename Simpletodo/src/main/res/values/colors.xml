@@ -3,4 +3,9 @@
   <color name="light_gray">#F0F0F0</color>
   <color name="dark_gray">#CCC</color>
   <color name="empty_task_text_color">#999</color>
+  <color name="badge">#777</color>
+  <color name="badge_text">@color/action_bar_background</color>
+  <color name="action_bar_background">#DCDDDC</color>
+  <color name="divider">#DDD</color>
+  <color name="edit_button_tint">#999</color>
 </resources>

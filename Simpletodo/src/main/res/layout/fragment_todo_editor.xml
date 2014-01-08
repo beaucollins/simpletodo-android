@@ -1,0 +1,20 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.simperium.simpletodo.TodoEditorFragment">
+
+    <EditText
+        android:id="@+id/editor"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:inputType="text|"
+        android:hint="@string/task_label_hint"
+        android:imeActionLabel="@string/save"
+        android:imeActionId="0x100"
+        android:imeOptions="actionDone"
+        android:gravity="top"
+        android:padding="8dp"
+        android:background="@android:color/white"/>
+
+</FrameLayout>

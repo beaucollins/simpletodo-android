@@ -16,8 +16,9 @@ repositories {
 }
 
 dependencies {
-    debugCompile 'com.simperium:simperium-android-support:0.4.1-beta3'
-    releaseCompile 'com.simperium:simperium-android:0.4.1-beta3'
+    compile 'com.android.support:support-v4:+'
+    debugCompile 'com.simperium:simperium-android-support:0.4.1-rc'
+    releaseCompile 'com.simperium:simperium-android:0.4.1-rc'
 }
 
 version "1.0.0"

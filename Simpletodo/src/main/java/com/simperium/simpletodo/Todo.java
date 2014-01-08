@@ -49,10 +49,29 @@ public class Todo extends BucketObject {
         super(key, properties);
     }
 
+    public static int countCompleted(Bucket<Todo> bucket) {
+        return bucket.query().where(DONE_PROPERTY, Query.ComparisonType.EQUAL_TO, DONE).count();
+    }
+
     public static Query<Todo> queryAll(Bucket<Todo> bucket) {
         Query<Todo> query = bucket.query();
         query.order(ORDER_PROPERTY);
         return query;
+    }
+
+    public static void deleteCompleted(final Bucket<Todo> bucket) {
+        bucket.executeAsync(new Runnable() {
+            @Override
+            public void run() {
+                Query<Todo> query = bucket.query();
+                Bucket.ObjectCursor<Todo> cursor = query.where(DONE_PROPERTY, Query.ComparisonType.EQUAL_TO, DONE).execute();
+                while (cursor.moveToNext()) {
+                    Todo todo = cursor.getObject();
+                    todo.delete();
+                }
+                cursor.close();
+            }
+        });
     }
 
     public String toString() {

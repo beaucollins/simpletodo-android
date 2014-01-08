@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/action_clear_done"
+          android:icon="@drawable/ic_action_discard"
+          android:title="@string/action_clear_done"
+          android:actionProviderClass="com.simperium.simpletodo.TrashIconProvider"
+          android:showAsAction="always" />
+</menu>
